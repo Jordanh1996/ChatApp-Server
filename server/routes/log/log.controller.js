@@ -8,8 +8,9 @@ const LogIn = (req, res) => {
     .then((user) => {
         user.generateAuthToken()
         .then((token) => {
-            res.header('x-auth', token).send({
-                loggedIn: true
+            res.send({
+                loggedIn: true,
+                token
             });
         });
     }).catch((e) => {
@@ -23,9 +24,10 @@ const Register = (req, res) => {
     user.save().then(() => {
         return user.generateAuthToken();
     }).then((token) => {
-        res.header('x-auth', token).send({
+        res.send({
             username: user.username,
             _id: user._id,
+            token,
             created: true
         });
     }).catch((e) => {
