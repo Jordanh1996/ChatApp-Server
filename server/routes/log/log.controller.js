@@ -40,11 +40,11 @@ const UserCheck = (req, res) => {
         .then((user) => {
             if (user) {
                 return res.send({
-                    taken: 'true'
+                    taken: true
                 });
             };
             res.send({
-                taken: 'false'
+                taken: false
             });
         }).catch((e) => {
             res.status(400);
