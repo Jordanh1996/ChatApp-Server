@@ -1,4 +1,5 @@
 const {Conversation} = require('../../models/conversation');
+const {User} = require('../../models/user');
 
 const saveConversation = (sender, receiver) => {
     const conversation = new Conversation({
@@ -20,8 +21,16 @@ const getConversations = (username) => {
     });
 };
 
+const getUsers = () => {
+    return User.find(
+        {},
+        {username: 1, _id: 0}
+    );
+};
+
 module.exports = {
     saveConversation,
     findConversation,
-    getConversations
+    getConversations,
+    getUsers
 };

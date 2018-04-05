@@ -47,8 +47,18 @@ const getConversations = (req, res) => {
     });
 };
 
+const getUsers = (req, res) => {
+    Service.getUsers().then((users) => {
+        const userNames = users.map((user) => {
+            return user.username;
+        });
+        res.send(userNames);
+    });
+};
+
 module.exports = {
     startConversation,
     sendMessage,
-    getConversations
+    getConversations,
+    getUsers
 };

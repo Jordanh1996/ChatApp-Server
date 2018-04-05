@@ -11,4 +11,6 @@ router.post('/send', authenticate, controller.sendMessage);
 
 router.get('/all', authenticate, controller.getConversations);
 
+router.get('/users', authenticate, controller.getUsers);
+
 module.exports = router;
