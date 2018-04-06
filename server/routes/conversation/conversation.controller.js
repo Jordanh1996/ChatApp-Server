@@ -6,7 +6,9 @@ const startConversation = (req, res) => {
     const body = _.pick(req.body, ['receiver']);
     Service.findConversation(req.user.username, body.receiver).then((excists) => {
         if (excists) {
-            return res.status(400).send();
+            return res.send({
+                excists: true
+            });
         };
         const conversation = Service.saveConversation(req.user.username, body.receiver);
         conversation.save().then((started) => {
